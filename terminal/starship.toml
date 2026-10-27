@@ -1,0 +1,43 @@
+# ◆ CATALYST — City of Glass koşucu HUD'u
+# Renkler terminal paletinden gelir: Catalyst ve City of Glass profillerinin ikisinde de çalışır.
+add_newline = true
+format = """
+[ ◆ ](bold bg:red fg:bright-white)[](fg:red bg:black)\
+$directory\
+[](fg:black)[](fg:red)[](fg:bright-red)\
+$git_branch$git_status$nodejs$python$rust$golang$cmd_duration
+$character"""
+
+[directory]
+style = "bold bg:black fg:bright-white"
+format = "[ $path ]($style)[$read_only]($read_only_style)"
+read_only = " 󰌾 "
+read_only_style = "bg:black fg:red"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = " "
+style = "bold red"
+format = " [$symbol$branch]($style)"
+
+[git_status]
+style = "yellow"
+format = "[ $all_status$ahead_behind]($style)"
+
+[nodejs]
+format = " [ $version](green)"
+[python]
+format = " [ $version](yellow)"
+[rust]
+format = " [ $version](red)"
+[golang]
+format = " [ $version](cyan)"
+
+[cmd_duration]
+min_time = 2000
+format = " [⏱ $duration](bright-black)"
+
+[character]
+success_symbol = "[ ▸](bold red)"
+error_symbol = "[ ✕](bold bright-red)"

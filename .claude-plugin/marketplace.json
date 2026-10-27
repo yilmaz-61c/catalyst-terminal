@@ -1,0 +1,5 @@
+{
+  "name": "catalyst-terminal",
+  "owner": { "name": "yilmaz-61c" },
+  "plugins": [{ "name": "catalyst-runner", "source": "./plugins/catalyst-runner" }]
+}

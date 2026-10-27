@@ -1,0 +1,22 @@
+{
+  "theme": "custom:catalyst-downtown",
+  "statusLine": { "type": "command", "command": "~/.claude/catalyst/statusline.sh", "padding": 0 },
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Running", "Sprinting", "Wallrunning", "Vaulting", "Sliding", "Climbing", "Leaping",
+      "Rolling", "Springboarding", "Ledge-grabbing", "Zip-lining", "Following the red",
+      "Evading KrugerSec", "Building momentum", "Mapping the route", "Crossing rooftops",
+      "Slipping past the Grid", "Making the delivery", "Scaling the Shard", "Dropping in"
+    ]
+  },
+  "spinnerTipsOverride": {
+    "tips": [
+      "◆ Momentum is everything. Do not stop on the rooftops.",
+      "◆ Red marks the way. Trust it.",
+      "◆ The Grid sees everything. Stay off it.",
+      "◆ Glass reflects. Runners do not.",
+      "◆ Delivery first. Questions later."
+    ]
+  }
+}

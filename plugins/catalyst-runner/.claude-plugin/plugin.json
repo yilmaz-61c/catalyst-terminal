@@ -1,0 +1,1 @@
+{ "name": "catalyst-runner", "version": "0.4.0", "description": "Mirror's Edge Catalyst flavour: Runner Vision band with momentum, runner turn-end lines and greeting", "types": "./types/index.d.ts" }

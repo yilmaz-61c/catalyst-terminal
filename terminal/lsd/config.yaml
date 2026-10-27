@@ -1,0 +1,7 @@
+icons:
+  when: auto
+  theme: fancy
+color:
+  when: auto
+  theme: custom
+date: +%d.%m.%Y %H:%M

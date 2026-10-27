@@ -1,0 +1,14 @@
+{
+  "downtown": { "name": "DOWNTOWN",         "tag": "The heart of Glass. Runner red on the rooftops.",
+                "bg": "#0b1017", "accent": "#e8322c", "bright": "#ff5a4e" },
+  "anchor":   { "name": "ANCHOR",           "tag": "Corporate towers, sakura and neon money.",
+                "bg": "#120b16", "accent": "#ff4f9a", "bright": "#ff7ab5", "slots": { "magenta": ["#b48cff", "#d2b8ff"] } },
+  "the-view": { "name": "THE VIEW",         "tag": "Ocean glass and quiet balconies by the bay.",
+                "bg": "#06121a", "accent": "#1fc8e8", "bright": "#6fe0f5", "slots": { "cyan": ["#5ff0d0", "#9af7e2"] } },
+  "rezoning": { "name": "REZONING",         "tag": "Cranes, scaffolds and half-built routes.",
+                "bg": "#140f0a", "accent": "#ff7a1a", "bright": "#ff9d4d" },
+  "kruger":   { "name": "KRUGER HQ",        "tag": "The Shard. Cold blue light, KrugerSec everywhere.",
+                "bg": "#060b18", "accent": "#3d8bff", "bright": "#7ab0ff", "slots": { "blue": ["#b9d4ff", "#dde9ff"] } },
+  "omnistat": { "name": "OMNISTAT TUNNELS", "tag": "Sodium light under the city. Stay low.",
+                "bg": "#0d0d09", "accent": "#ffd60a", "bright": "#ffe45c", "slots": { "green": ["#ff9d2e", "#ffbd6e"] } }
+}

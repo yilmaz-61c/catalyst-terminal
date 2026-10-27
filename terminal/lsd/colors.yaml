@@ -1,0 +1,38 @@
+user: red
+group: dark_grey
+permission:
+  read: white
+  write: red
+  exec: green
+  exec-sticky: magenta
+  no-access: dark_grey
+  octal: cyan
+  acl: cyan
+  context: cyan
+date:
+  hour-old: red
+  day-old: white
+  older: dark_grey
+size:
+  none: dark_grey
+  small: white
+  medium: yellow
+  large: red
+inode:
+  valid: magenta
+  invalid: dark_grey
+links:
+  valid: cyan
+  invalid: dark_grey
+tree-edge: red
+git-status:
+  default: dark_grey
+  unmodified: dark_grey
+  ignored: dark_grey
+  new-in-index: green
+  new-in-workdir: green
+  typechange: yellow
+  deleted: red
+  renamed: green
+  modified: yellow
+  conflicted: red
