@@ -50,7 +50,7 @@ test('the token line is drawn in the turn-end row', async ($, on) => {
 
   const ui = await $.ui.mount({ plugin: 'catalyst-runner', component: 'TurnDuration', surface: 'terminal', props: { word: 'Baked', durationMs: 12000 } } as any)
   const row = await ui.find({ type: 'Text', text: /48\.2K token/ })
-  expect(row?.text).toContain('girdi 1.2K')
+  expect(row?.text).toContain('input 1.2K')
   await ui.unmount()
 })
 

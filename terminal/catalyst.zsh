@@ -1,33 +1,33 @@
-# ◆ CATALYST — zsh ayarları
-# ~/.zshrc içinden yüklenir:  source ~/.config/catalyst/catalyst.zsh
-# Kurulu olmayan araçlar sessizce atlanır.
+# ◆ CATALYST — zsh setup
+# Loaded from ~/.zshrc:  source ~/.config/catalyst/catalyst.zsh
+# Tools that are not installed are skipped quietly.
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# --- Geçmiş ---
+# --- History ---
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE
 
-# --- Tamamlama ---
+# --- Completion ---
 autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'   # büyük/küçük harf duyarsız
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'   # case-insensitive
 zstyle ':completion:*' menu select
 
-# --- Araçlar ---
+# --- Tools ---
 (( $+commands[starship] )) && eval "$(starship init zsh)"
-(( $+commands[zoxide] ))   && eval "$(zoxide init zsh)"     # z <klasör>  /  zi (interaktif)
-(( $+commands[fzf] ))      && source <(fzf --zsh)           # Ctrl+R geçmiş, Ctrl+T dosya, Alt+C klasör
+(( $+commands[zoxide] ))   && eval "$(zoxide init zsh)"     # z <dir>  /  zi (interactive)
+(( $+commands[fzf] ))      && source <(fzf --zsh)           # Ctrl+R history, Ctrl+T files, Alt+C dirs
 
-# fzf: terminal paletini kullanır, vurgu rengi bölgenin rengi
+# fzf: uses the terminal palette, accent is the district colour
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border=sharp --prompt='◆ ' --pointer='▸' --marker='▮' \
   --color=16,hl:red,hl+:bright-red,pointer:red,marker:red,prompt:red,spinner:red,info:bright-black,border:bright-black,header:blue"
 
-# Dosya renkleri: klasörler vurgu renginde rota, çalıştırılabilirler sarı
+# File colours: directories are routes in the accent colour, executables yellow
 export LS_COLORS="di=1;31:ln=36:ex=1;32:so=35:pi=33:bd=34:cd=34:*.md=97:*.json=33:*.yml=33:*.yaml=33:*.toml=33:*.sh=32:*.py=33:*.js=33:*.ts=34:*.zip=91:*.tar=91:*.gz=91:*.jpg=95:*.png=95:*.pdf=91"
 
-# --- Kısayollar ---
+# --- Aliases ---
 if (( $+commands[lsd] )); then
   alias ls='lsd'
   alias ll='lsd -l'
@@ -40,13 +40,13 @@ if (( $+commands[bat] )); then
 fi
 
 # --- ◆ Catalyst ---
-# Bulunamayan komut: rota kapalı
+# Unknown command: route blocked
 command_not_found_handler() {
-  print -u2 -- "\e[31m◆ ROUTE BLOCKED\e[0m \e[90m—\e[0m '$1' \e[90mgrid üzerinde bulunamadı\e[0m"
+  print -u2 -- "\e[31m◆ ROUTE BLOCKED\e[0m \e[90m—\e[0m '$1' \e[90mnot found on the grid\e[0m"
   return 127
 }
 
-# Tema değiştirme: theme <bölge> | random | glass  (bölgeler: theme list)
+# Switch theme: theme <district> | random | glass  (districts: theme list)
 theme() {
   [[ -z ${CATALYST_SLUGS} ]] && source ~/.config/catalyst/district.zsh
   local slug=$1 profile
@@ -57,19 +57,19 @@ theme() {
   esac
   if [[ -z $profile ]]; then
     profile=${CATALYST_PROFILE[$slug]}
-    [[ -z $profile ]] && { print "bilinmeyen bölge: $slug (theme list)"; return 1 }
+    [[ -z $profile ]] && { print "unknown district: $slug (see: theme list)"; return 1 }
     export CATALYST_DISTRICT=$slug
   fi
   catalyst_apply_profile "$profile" && print -- "\e[31m◆\e[0m $profile"
 }
 
-# Yeni sekme: rastgele bölge + açılış ekranı (Claude'un kendi kabuklarında çalışmaz)
+# New tab: random district + greeting (skipped in Claude Code's own shells)
 if [[ -o interactive && -z $CLAUDECODE ]]; then
   source ~/.config/catalyst/district.zsh
   source ~/.config/catalyst/greeting.zsh
 fi
 
-# --- Eklentiler (syntax-highlighting en sonda olmalı) ---
+# --- Plugins (syntax-highlighting must come last) ---
 if [[ -r ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
   ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'

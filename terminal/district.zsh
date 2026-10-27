@@ -1,5 +1,5 @@
-# ◆ Bölge seçimi: her yeni sekme rastgele bir bölge alır.
-# CATALYST_DISTRICT dışa aktarılır, böylece bu sekmede açılan Claude da aynı bölgeyi kullanır.
+# ◆ District picker: every new tab gets a random district.
+# CATALYST_DISTRICT is exported, so Claude Code started in this tab uses the same district.
 typeset -gA CATALYST_NAME CATALYST_PROFILE CATALYST_RGB CATALYST_TAG
 typeset -ga CATALYST_SLUGS
 () {
@@ -10,7 +10,7 @@ typeset -ga CATALYST_SLUGS
   done < ~/.config/catalyst/districts.tsv
 }
 
-# Bu sekmeyi (tty'sine göre) bir profile geçirir
+# Switches this tab (found by its tty) to a profile
 catalyst_apply_profile() {
   local profile=$1 tty=$TTY
   [[ $TERM_PROGRAM == Apple_Terminal && -n $tty ]] || return

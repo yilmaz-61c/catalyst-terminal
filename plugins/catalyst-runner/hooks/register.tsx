@@ -103,7 +103,7 @@ export const register: Register = on => {
 
     if (u && tokens !== null) {
       const line: TokenLine = {
-        text: `◆ ${fmt(tokens)} token  ▸ girdi ${fmt(u.input_tokens)} · önbellek ${fmt(u.cache_read_input_tokens + u.cache_creation_input_tokens)} · çıktı ${fmt(u.output_tokens)}`,
+        text: `◆ ${fmt(tokens)} token  ▸ input ${fmt(u.input_tokens)} · cache ${fmt(u.cache_read_input_tokens + u.cache_creation_input_tokens)} · output ${fmt(u.output_tokens)}`,
         shown: false,
       }
       tokenLines.set(e.durationMs, line)

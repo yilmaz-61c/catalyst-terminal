@@ -1,7 +1,7 @@
 #!/bin/zsh
-# ◆ CATALYST — kurulum
-# Terminal.app profillerini, zsh ayarlarını, Claude Code temalarını ve HUD'u kurar.
-# Var olan dosyaların yedeğini alır (*.catalyst-backup).
+# ◆ CATALYST — installer
+# Installs the Terminal.app profiles, zsh setup, Claude Code themes and the HUD.
+# Existing files are backed up first (*.catalyst-backup).
 set -e
 cd "${0:A:h}"
 
@@ -9,16 +9,16 @@ R=$'\e[31m' D=$'\e[90m' X=$'\e[0m'
 step() { print -- "${R}◆${X} $1" }
 backup() { [[ -e $1 && ! -e $1.catalyst-backup ]] && cp -R "$1" "$1.catalyst-backup" || true }
 
-# --- Gereksinimler ---
+# --- Requirements ---
 missing=()
 for c in jq starship lsd bat fzf zoxide; do (( $+commands[$c] )) || missing+=($c); done
 if (( ${#missing} )); then
-  print -- "${D}Eksik araçlar (README'deki bağlantılardan kurulabilir): ${missing}${X}"
-  (( $+commands[jq] )) || { print "jq olmadan Claude ayarları birleştirilemez, önce jq kurun."; exit 1 }
+  print -- "${D}Missing tools (see the README for links): ${missing}${X}"
+  (( $+commands[jq] )) || { print "jq is needed to merge the Claude Code settings. Install jq first."; exit 1 }
 fi
 
-# --- Terminal ve kabuk dosyaları ---
-step "Kabuk ayarları ~/.config/catalyst altına kopyalanıyor"
+# --- Terminal and shell files ---
+step "Copying shell setup to ~/.config/catalyst"
 mkdir -p ~/.config/catalyst/profiles ~/.config/lsd
 cp terminal/{catalyst.zsh,district.zsh,greeting.zsh,districts.json,districts.tsv,build-districts.py,profile.swift} ~/.config/catalyst/
 cp terminal/profiles/*.terminal ~/.config/catalyst/profiles/
@@ -27,19 +27,19 @@ backup ~/.config/lsd/config.yaml; backup ~/.config/lsd/colors.yaml
 cp terminal/lsd/*.yaml ~/.config/lsd/
 
 if ! grep -q 'catalyst/catalyst.zsh' ~/.zshrc 2>/dev/null; then
-  step "~/.zshrc dosyasına Catalyst satırı ekleniyor"
+  step "Adding the Catalyst line to ~/.zshrc"
   backup ~/.zshrc
   print -- '\n# ◆ Catalyst\nsource ~/.config/catalyst/catalyst.zsh' >> ~/.zshrc
 fi
 
-# --- zsh eklentileri ---
+# --- zsh plugins ---
 mkdir -p ~/.zsh
 [[ -d ~/.zsh/zsh-autosuggestions ]] || git clone -q --depth 1 https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 [[ -d ~/.zsh/zsh-syntax-highlighting ]] || git clone -q --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
 
-# --- Terminal.app profilleri ---
+# --- Terminal.app profiles ---
 if [[ $OSTYPE == darwin* ]]; then
-  step "Terminal.app profilleri içe aktarılıyor"
+  step "Importing Terminal.app profiles"
   before=$(osascript -e 'tell application "Terminal" to return id of every window')
   while IFS='|' read -r slug name title rgb tag; do
     osascript -e "tell application \"Terminal\" to return exists settings set \"$title\"" | grep -q true && continue
@@ -51,7 +51,7 @@ if [[ $OSTYPE == darwin* ]]; then
     osascript -e 'tell application "Terminal" to set name of settings set "city-of-glass" to "City of Glass"' >/dev/null 2>&1 || true
   fi
   sleep 1
-  # İçe aktarırken açılan pencereleri kapat (önceden açık olanlara dokunmaz)
+  # Close the windows the import opened (windows open before are left alone)
   osascript -e "set keep to {$before}
     tell application \"Terminal\"
       set extra to {}
@@ -70,7 +70,7 @@ if [[ $OSTYPE == darwin* ]]; then
 fi
 
 # --- Claude Code ---
-step "Claude Code temaları ve HUD kuruluyor"
+step "Installing Claude Code themes and the HUD"
 mkdir -p ~/.claude/themes ~/.claude/catalyst
 cp claude/themes/*.json ~/.claude/themes/
 cp claude/statusline.sh ~/.claude/catalyst/statusline.sh && chmod +x ~/.claude/catalyst/statusline.sh
@@ -80,5 +80,5 @@ jq -s '.[0] * .[1]' ~/.claude/settings.json claude/settings.json > ~/.claude/set
 mv ~/.claude/settings.json.tmp ~/.claude/settings.json
 
 print
-step "Kurulum tamam. Yeni bir sekme açın (⌘T)."
-print -- "${D}  Claude Code modu için Claude içinde:  /plugin install catalyst-runner --marketplace yilmaz-61c/catalyst-terminal${X}"
+step "Done. Open a new tab (⌘T)."
+print -- "${D}  For the Claude Code mod, inside Claude:  /plugin install catalyst-runner --marketplace yilmaz-61c/catalyst-terminal${X}"
