@@ -1,5 +1,5 @@
 #!/bin/zsh
-# ◆ CATALYST HUD — Claude Code status line
+# ✦ CATALYST HUD — Claude Code status line
 input=$(cat)
 j() { print -r -- "$input" | jq -r "$1 // empty" 2>/dev/null }
 
@@ -26,7 +26,7 @@ if [[ -n $slug ]] && line=$(grep "^$slug|" ~/.config/catalyst/districts.tsv 2>/d
   RB=$'\e[48;2;'"$parts[4]"$'m\e[38;2;255;255;255m\e[1m'
 fi
 
-out="${RB} ◆ RUNNER ${X}${R}${X} ${R}${district}${X}"
+out="${RB} ✦ RUNNER ${X}${R}${X} ${R}${district}${X}"
 [[ -n $model ]] && out+=" ${R}╱${X} ${W}${model}${X}"
 if [[ -n $dir ]]; then
   short=${dir/#$HOME/\~}
@@ -55,7 +55,7 @@ zmodload zsh/datetime
 h5=$(j '.rate_limits.five_hour.used_percentage'); h5r=$(j '.rate_limits.five_hour.resets_at')
 d7=$(j '.rate_limits.seven_day.used_percentage'); d7r=$(j '.rate_limits.seven_day.resets_at')
 if [[ -n $h5 || -n $d7 ]]; then
-  line="${RB} ◆ PLAN   ${X}${R}${X}"
+  line="${RB} ✦ PLAN   ${X}${R}${X}"
   if [[ -n $h5 ]]; then
     p=${h5%.*}; c=$(pcol $p)
     line+=" ${R}5 HOURS${X} ${c}$(bar10 $p) ${p}%${X}"

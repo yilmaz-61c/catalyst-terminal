@@ -1,8 +1,8 @@
-# ◆ CATALYST — City of Glass runner HUD
+# ✦ CATALYST — City of Glass runner HUD
 # Colours come from the terminal palette, so the prompt follows every district profile.
 add_newline = true
 format = """
-[ ◆ ](bold bg:red fg:bright-white)[](fg:red bg:black)\
+[ ✦ ](bold bg:red fg:bright-white)[](fg:red bg:black)\
 $directory\
 [](fg:black)[](fg:red)[](fg:bright-red)\
 $git_branch$git_status$nodejs$python$rust$golang$cmd_duration

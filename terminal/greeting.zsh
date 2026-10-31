@@ -1,4 +1,4 @@
-# ◆ RUNNER NETWORK — new session greeting
+# ✦ RUNNER NETWORK — new session greeting
 () {
   local R=$'\e[31m' W=$'\e[97m' D=$'\e[90m' B=$'\e[34m' Y=$'\e[33m' G=$'\e[32m' X=$'\e[0m'
   local RB=$'\e[41;97;1m' BOLD=$'\e[1m'
@@ -55,7 +55,7 @@
   local who=${(U)USER}
 
   print
-  print -- "  ${RB} ◆ R U N N E R   N E T W O R K ${X}${R}${X}  ${D}${place}${X}"
+  print -- "  ${RB} ✦ R U N N E R   N E T W O R K ${X}${R}${X}  ${D}${place}${X}"
   print
   print -- "  ${R}OPERATOR${X}   ${W}${BOLD}${who}${X}"
   print -- "  ${R}DISTRICT${X}   ${W}${BOLD}${district}${X}  ${D}${tagline}${X}"

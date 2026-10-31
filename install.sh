@@ -1,12 +1,12 @@
 #!/bin/zsh
-# ◆ CATALYST — installer
+# ✦ CATALYST — installer
 # Installs the Terminal.app profiles, zsh setup, Claude Code themes and the HUD.
 # Existing files are backed up first (*.catalyst-backup).
 set -e
 cd "${0:A:h}"
 
 R=$'\e[31m' D=$'\e[90m' X=$'\e[0m'
-step() { print -- "${R}◆${X} $1" }
+step() { print -- "${R}✦${X} $1" }
 backup() { [[ -e $1 && ! -e $1.catalyst-backup ]] && cp -R "$1" "$1.catalyst-backup" || true }
 
 # --- Requirements ---
@@ -29,7 +29,7 @@ cp terminal/lsd/*.yaml ~/.config/lsd/
 if ! grep -q 'catalyst/catalyst.zsh' ~/.zshrc 2>/dev/null; then
   step "Adding the Catalyst line to ~/.zshrc"
   backup ~/.zshrc
-  print -- '\n# ◆ Catalyst\nsource ~/.config/catalyst/catalyst.zsh' >> ~/.zshrc
+  print -- '\n# ✦ Catalyst\nsource ~/.config/catalyst/catalyst.zsh' >> ~/.zshrc
 fi
 
 # --- zsh plugins ---

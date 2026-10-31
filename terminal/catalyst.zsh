@@ -1,4 +1,4 @@
-# ◆ CATALYST — zsh setup
+# ✦ CATALYST — zsh setup
 # Loaded from ~/.zshrc:  source ~/.config/catalyst/catalyst.zsh
 # Tools that are not installed are skipped quietly.
 
@@ -21,7 +21,7 @@ zstyle ':completion:*' menu select
 (( $+commands[fzf] ))      && source <(fzf --zsh)           # Ctrl+R history, Ctrl+T files, Alt+C dirs
 
 # fzf: uses the terminal palette, accent is the district colour
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border=sharp --prompt='◆ ' --pointer='▸' --marker='▮' \
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border=sharp --prompt='✦ ' --pointer='▸' --marker='▮' \
   --color=16,hl:red,hl+:bright-red,pointer:red,marker:red,prompt:red,spinner:red,info:bright-black,border:bright-black,header:blue"
 
 # File colours: directories are routes in the accent colour, executables yellow
@@ -39,10 +39,10 @@ if (( $+commands[bat] )); then
   export BAT_THEME="ansi"
 fi
 
-# --- ◆ Catalyst ---
+# --- ✦ Catalyst ---
 # Unknown command: route blocked
 command_not_found_handler() {
-  print -u2 -- "\e[31m◆ ROUTE BLOCKED\e[0m \e[90m—\e[0m '$1' \e[90mnot found on the grid\e[0m"
+  print -u2 -- "\e[31m✦ ROUTE BLOCKED\e[0m \e[90m—\e[0m '$1' \e[90mnot found on the grid\e[0m"
   return 127
 }
 
@@ -51,7 +51,7 @@ theme() {
   [[ -z ${CATALYST_SLUGS} ]] && source ~/.config/catalyst/district.zsh
   local slug=$1 profile
   case $slug in
-    list) for slug in $CATALYST_SLUGS; do print -- "  \e[38;2;${CATALYST_RGB[$slug]}m◆\e[0m $slug  \e[90m${CATALYST_TAG[$slug]}\e[0m"; done; return ;;
+    list) for slug in $CATALYST_SLUGS; do print -- "  \e[38;2;${CATALYST_RGB[$slug]}m✦\e[0m $slug  \e[90m${CATALYST_TAG[$slug]}\e[0m"; done; return ;;
     ""|random) slug=${CATALYST_SLUGS[$(( RANDOM % ${#CATALYST_SLUGS} + 1 ))]} ;|
     glass) profile="City of Glass" ;;
   esac
@@ -60,7 +60,7 @@ theme() {
     [[ -z $profile ]] && { print "unknown district: $slug (see: theme list)"; return 1 }
     export CATALYST_DISTRICT=$slug
   fi
-  catalyst_apply_profile "$profile" && print -- "\e[31m◆\e[0m $profile"
+  catalyst_apply_profile "$profile" && print -- "\e[31m✦\e[0m $profile"
 }
 
 # New tab: random district + greeting (skipped in Claude Code's own shells)

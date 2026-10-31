@@ -65,7 +65,7 @@ export const register: Register = on => {
     }
 
     if (e.surface === 'terminal') {
-      $.ui.toast(`◆ RUNNER NETWORK ONLINE — ${DISTRICTS[district].name}`)
+      $.ui.toast(`✦ RUNNER NETWORK ONLINE — ${DISTRICTS[district].name}`)
     }
 
     return next(e)
@@ -103,7 +103,7 @@ export const register: Register = on => {
 
     if (u && tokens !== null) {
       const line: TokenLine = {
-        text: `◆ ${fmt(tokens)} token  ▸ input ${fmt(u.input_tokens)} · cache ${fmt(u.cache_read_input_tokens + u.cache_creation_input_tokens)} · output ${fmt(u.output_tokens)}`,
+        text: `✦ ${fmt(tokens)} token  ▸ input ${fmt(u.input_tokens)} · cache ${fmt(u.cache_read_input_tokens + u.cache_creation_input_tokens)} · output ${fmt(u.output_tokens)}`,
         shown: false,
       }
       tokenLines.set(e.durationMs, line)
@@ -133,7 +133,7 @@ export const register: Register = on => {
 
       return (
         <Box>
-          <Text backgroundColor={RED} color="#ffffff" bold> ◆ RUNNER VISION </Text>
+          <Text backgroundColor={RED} color="#ffffff" bold> ✦ RUNNER VISION </Text>
           <Text color={RED}> MOMENTUM </Text>
           <Text color={RED} bold>{meter(r.moves)}</Text>
           {r.route ? <Text dimColor>  ROUTE ▸ </Text> : null}
@@ -149,9 +149,9 @@ export const register: Register = on => {
 
     return (
       <Box>
-        <Text color={RED} bold>◆ DELIVERY COMPLETE</Text>
+        <Text color={RED} bold>✦ DELIVERY COMPLETE</Text>
         <Text dimColor>  {d.seconds}s · {d.moves} moves</Text>
-        {d.tokens !== null ? <Text color={YELLOW} bold>  ◆ {fmt(d.tokens)} token</Text> : null}
+        {d.tokens !== null ? <Text color={YELLOW} bold>  ✦ {fmt(d.tokens)} token</Text> : null}
       </Box>
     )
   })

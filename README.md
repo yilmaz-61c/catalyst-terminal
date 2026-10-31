@@ -1,11 +1,11 @@
-# ◆ catalyst-terminal
+# ✦ catalyst-terminal
 
 A Mirror's Edge Catalyst–inspired theme for macOS Terminal and Claude Code.
 
 > Fan project, not affiliated with EA or DICE. No game assets are included: the colours were measured from the official art book and rebuilt by hand.
 
 ```
- ◆ R U N N E R   N E T W O R K   ISTANBUL // TÜRKİYE
+ ✦ R U N N E R   N E T W O R K   ISTANBUL // TÜRKİYE
 
  OPERATOR   RUNNER
  DISTRICT   KRUGER HQ  The Shard. Cold blue light, KrugerSec everywhere.
@@ -21,26 +21,26 @@ A Mirror's Edge Catalyst–inspired theme for macOS Terminal and Claude Code.
 
 | District | Accent |
 |---|---|
-| ◆ Downtown | runner red `#e8322c` |
-| ◆ Anchor | neon pink `#ff4f9a` |
-| ◆ The View | ocean cyan `#1fc8e8` |
-| ◆ Rezoning | construction orange `#ff7a1a` |
-| ◆ Kruger HQ | KrugerSec blue `#3d8bff` |
-| ◆ OmniStat Tunnels | sodium yellow `#ffd60a` |
+| ✦ Downtown | runner red `#e8322c` |
+| ✦ Anchor | neon pink `#ff4f9a` |
+| ✦ The View | ocean cyan `#1fc8e8` |
+| ✦ Rezoning | construction orange `#ff7a1a` |
+| ✦ Kruger HQ | KrugerSec blue `#3d8bff` |
+| ✦ OmniStat Tunnels | sodium yellow `#ffd60a` |
 
 Plus a light theme, **City of Glass**.
 
 **Terminal**
 - A Terminal.app profile per district (JetBrains Mono Nerd Font)
 - Greeting screen with your location (from your IP, cached for 6 hours), the time, and a **KSEC** patrol level driven by CPU load
-- Starship prompt, matching lsd / fzf / zsh colours, and a `◆ ROUTE BLOCKED` message for unknown commands
+- Starship prompt, matching lsd / fzf / zsh colours, and a `✦ ROUTE BLOCKED` message for unknown commands
 - `theme list`, `theme <district>`, `theme random`, `theme glass`
 
 **Claude Code**
 - A colour theme per district; Claude Code picks up the district of the tab it was started in
 - HUD status line: district, model, folder, git branch, context usage (GRID) and plan usage (5-hour and weekly windows, with time until reset)
 - Runner spinner verbs (`Wallrunning…`, `Evading KrugerSec…`)
-- The **catalyst-runner** mod: a `◆ RUNNER VISION  MOMENTUM ▰▰▰▱▱` band while Claude works, and a token line at the end of every turn: `Wallran for 12s  ◆ 48.2K token ▸ input · cache · output`
+- The **catalyst-runner** mod: a `✦ RUNNER VISION  MOMENTUM ▰▰▰▱▱` band while Claude works, and a token line at the end of every turn: `Wallran for 12s  ✦ 48.2K token ▸ input · cache · output`
 
 ## Install
 

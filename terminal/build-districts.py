@@ -27,7 +27,7 @@ table = []
 
 for slug, d in districts.items():
     bg, acc, br = d["bg"], d["accent"], d["bright"]
-    slots = {**BASE, **d.get("slots", {}), "red": [acc, br]}
+    slots = {**BASE, **d.get("slots", {}), "red": [acc, br], "blue": [acc, br]}  # links (Claude Code draws them in ANSI blue) follow the district
     slots["black"] = [mix(bg, "#ffffff", 0.06), mix(bg, "#8090a0", 0.45)]
     normal = [slots[k][0] for k in ORDER]
     bright = [slots[k][1] for k in ORDER]
@@ -36,7 +36,7 @@ for slug, d in districts.items():
                     bg, "#e4eaf0", acc, mix(acc, bg, 0.62), *normal, *bright, acc], check=True)
 
     theme = {
-        "name": f"◆ {d['name'].title().replace('Hq', 'HQ')}",
+        "name": f"✦ {d['name'].title().replace('Hq', 'HQ')}",
         "base": "dark",
         "overrides": {
             "claude": acc, "claudeShimmer": mix(br, "#ffffff", 0.3),

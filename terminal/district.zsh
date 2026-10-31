@@ -1,4 +1,4 @@
-# ◆ District picker: every new tab gets a random district.
+# ✦ District picker: every new tab gets a random district.
 # CATALYST_DISTRICT is exported, so Claude Code started in this tab uses the same district.
 typeset -gA CATALYST_NAME CATALYST_PROFILE CATALYST_RGB CATALYST_TAG
 typeset -ga CATALYST_SLUGS
